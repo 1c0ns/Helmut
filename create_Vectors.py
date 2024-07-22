@@ -11,6 +11,8 @@ def create_vector_embeding(file_path):
         pinecone_interaction.upsert_vector(vector)
 
 # from retrive_vectors_data import querry_vector
+# retruning the ids of the top 5 matches in the pinecone index (vector database)
+#----- do we need a score comarison to generate good responses or does it not matter if we dont compare?------
 def querry_vector(querry):
     vector = embeddings_openAI.create_vector(querry)
     response = pinecone_interaction.query_embeddings(vector)

@@ -69,11 +69,13 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
     # Confirmation message
     print("Upserted vector to Pinecone index")
 
-def separate_ids_and_scores(data):
+
+# separate ids and scores from the query response
+def separate_ids_and_scores(querry_response):
     ids =[]
     scores =[]
 
-    for item in data:
+    for item in querry_response:
         matches = item['matches']
         for match in matches:
             ids.append(match['id'])
@@ -86,6 +88,7 @@ def vector_already_in_index(id, score):
         return True
     return False
 
+# similarity search 
 def query_embeddings(vector, top_k=5):
     results = index.query(vector=vector, top_k=top_k)
     print("Queried Pinecone index")

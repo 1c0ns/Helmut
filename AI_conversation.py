@@ -8,14 +8,15 @@ prompt2 = "You are a Waiter in a high class restaurant."
 prompt3 = "You are a detective. make sure that whatever the user says he comes out guilty."
 
 def chat_with_ai():
-    # Start the conversation with an empty list of messages
+    # Initialize array list that stores all messages
     messages = [{"role": "system", "content": prompt3}]
 
+    # Start the conversation loop that keeps adding user messages and AI responses to the array list
     while True:
         # Get user input from the console
         user_message = input("You: ")
         
-        # Append the user message to the conversation history
+        # Append the user message to the array list that stores all messages
         messages.append({"role": "user", "content": user_message})
         
         # Create a chat completion with the current conversation history
@@ -31,7 +32,7 @@ def chat_with_ai():
         ai_message = completion.choices[0].message.content
         print("AI: ", ai_message)
         
-        # Append the AI's response to the conversation history
+        # Append the AI's response to the array list that stores all messages
         messages.append({"role": "assistant", "content": ai_message})
         
         if user_message == "exit":

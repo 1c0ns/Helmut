@@ -13,3 +13,10 @@ def create_vector(input_text):
     )
     vector = response.data[0].embedding
     return vector
+
+
+
+
+
+
+
