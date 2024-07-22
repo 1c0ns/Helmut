@@ -1,363 +1,156 @@
-Information system: in addition to the application software and the data the system software and hardware (depending on the point of view) also its users.
-
-Source:
-Teubner 1999
-
-People and technology are parts of information systems
-Information systems operate via interfaces:
-with users
-with other information systems
-with information/data pools
-
-Interfaces
-
-Other Information Systems
-
-Information System
-
-User
-Interface
-Information/Data Pools
-
-Degree of Integration
-
-User
-Degree of Automation
-Business Function
-Hierarchical Level
-
-Range of Integration:
-
-a group
-company
-across companies
-production
-sales
-finance
-human resources
-operativ
-unteres/ mittleres/ oberes Management
-automated
-manual
-
-Layered Structure:
-
-Application
-
-DB
-DBMS
-Operating System
-
-Application
-
-GUI
-
-Application
-
-Operating System
-
-Timescale:
-
-1970
-1980
-1990
-Development of monolithic applications
-Software is being developed for a specific piece of hardware (machine code assembler) -> "spaghetti code"
-No reuse of already written basic functions
-Ported to other hardware only by completely new development
-
-Timescale:
-
-1970
-1980
-1990
-2000
-2010
-Introduction of operating systems
-Separation of application- and system-specific responsibilities
-Introduction of abstract programming interfaces
-Applications can reuse basic functions of the operating system (such as memory management)
-Customization of interfaces on hardware changes (e.g. new drivers)
-
-Timescale:
-
-1970
-1980
-1990
-2000
-2010
-Introduction of graphical user interfaces (GUI) to improve communication with the user
-Introduction of database management systems (DBMS)
-Relational database model and the structured query language (SQL)
-Extension of DBMS by transaction security and data recovery functionalities
-Avoiding application-specific data management
-Avoiding inconsistency through redundancy
-
-Timescale:
-
-1970
-1980
-1990
-2000
-2010
-Enhanced graphical user interface (GUI)
-Separation of presentation and application logic
-Increasing scope functionality and complexity of the information systems
-Increasing knowledge of users required to utilize information systems
-
-Timescale:
-
-1970
-1980
-1990
-2000
-2010
-Modern internet-based applications
-Web 2.0 semantic technologies, big data, mobile computing...
-Users become the "knowledge worker"
-A variety of skills and abilities
-Flexible user interfaces support users based on work context
-
-Timescale:
-
-1970
-1980
-1990
-2000
-2010
-Development of applications that are tailored to company-specific areas/fields of activity such as:
-Finance and accounting
-Marketing
-Sales
-Purchasing
-Manufacturing/production/warehouse management
-Research and development
-Human resources
-Isolated applications
-No access to data of other systems
-Data is stored redundantly and probably in different forms
-Inconsistency
-
-Management Information Systems:
-
-Systems to support decisions are known as management information systems:
-Executive Information Systems (EIS also information control system)
-Target group: top management
-Management Information Systems (MIS)
-General software that helps a company to control and monitor its business
-Decision Support Systems (DSS)
-Derive decisions based on review and assessment of data (algorithms)
-Business Intelligence (BI)
-Systematic analysis of large data sets
-ETL = extract/transform/load
-OLAP = online analytical processing
-Data warehouse = the underlying data store
+Basic syntactical structure:
+select [distinct] A1,…,An from R1, R2, …, Rm [where <Bedingung>] [group by Ai,…,Aj] | [group by Ai,…,Aj having <Bedingung>] [order by Ak,…,Al [asc|desc]];
+Eine Gruppierung ist eine Voraussetzung für die Ausführung von Aggregatfunktionen mit Bezug auf einzelne Attribute (Spalten)
+Standardaggregatfunktionen, beispielhaft:
+SUM(), MIN(), MAX(), AVG(), COUNT()
 
-Document Management System (DMS):
+All non-clustered (grouped) columns may only occur within aggregate functions in the select clause of our query
 
-Management of documents (e.g. contracts, invoices, or orders)
+Example – Group by
 
-Enterprise Content Management Systems (ECM):
+We want to determine the sum of the prices of all books per book title:
+select SUM(B.Price) As BookValue, Title from Book B group by Title
 
-Extend DMS with opportunities for collaboration and the integration of business processes
-Target: storage of knowledge in any format and in an interactive manner
-Examples: MS SharePoint, Alfresco, Confluence, MediaWiki, SemantikMediaWiki
+InventoryID, Title, Date, Price, FKAUthorID
+1, Chronicles: Volume 09/2005, 11,70, 2
+2, Pride and Prejudice 05/1813, 0,00, 1
+7, Pride and Prejudice 05/1813, 0,00, 1
+3, Getting Started with SQL: A Hands-On Approach for Beginners 02/2016, 22,40, 5
+4, Essentials of MIS 03/2011, 299,99, 4
+5, SQL Pocket Guide 01/2010, 9,29, 3
+6, SQL Pocket Guide 01/2010, 9,29, 3
 
-Supply Chain Management (SCM):
+Intermediate relation after grouping (step 3), so execution of:
+from Book B group by Title
 
-Material Requirements Planning (MRP)
-Controlling of supply chain
-Product management
-Demand planning/forecasting
+Example – Group by
 
-Customer Relationship Management (CRM):
+Group 1
 
-Customer acquisition
-Customer retention
-Customer recovery
-After sales management
-Complaints management
+Group 2
 
-Enterprise Resource Planning (ERP) Systems:
+Group column
+No classical relation
 
-Consolidation of heterogeneous enterprise applications can be achieved through an ERP system:
-Include several modules/components (depend on required functionality) to support business purposes
-Targets:
-Integration of data in a common database
-Uniform data structure/data management
-Challenges:
-Increasing complexity of ERP applications
-Maintenance of ERP systems is very resource, cost, and time consuming
+These columns may only be aggregated
 
-ERP System Architecture:
+A common projection (but no aggregation) may take place only on this column
 
-Sales Production Warehouse
+Group 3
 
-ERP
-
-Operating System
-DBMS
-
-Creation of Information/Data Silo:
-
-Operating System
-DBMS
-ERP
-Operating System
-DBMS
-SCM
-Operating System
-DBMS
-CRM
-
-Issues Prior to ERP Systems:
-
-Problems by silo formation
-Differences in names (attribute names)
-Differences in data types
-
-Integration:
-
-The incorporation of an information system into pre-existing systems is called integration.
-Often established through exchange of data between systems
-Exchange of data can avoid data inconsistency in the company
-Logical integration = retrieve and process (separated) data (is very flexible)
-Physical integration = central data storage (avoids redundancy so the multiple storage of the same data is prevented)
-
-Integration of all available data (information) provides a holistic view on business activities.
-
-Vertical Integration:
-
-Aggregation of information operating systems to management systems for analysis and planning is integration
-Information at the operational level
-Integrated processes across function boundaries
-
-Business-To-Employee (B2E):
-
-Store associates edit working time account in the company intranet
-
-Business-To-Business (B2B):
-
-Order to supplier via web
-
-Business-To-Consumer (B2C):
-
-Consumer buys merchandise via the Web shop of the company
-
-Business-To-Government (B2G):
-
-Electronic transfer of tax declaration
-
-Distributed Systems:
-
-Information systems are typically distributed systems
-A company often operates several information systems
-Multi-company and cross-business process co-operation involves additional information systems and advanced data exchange
-
-Solution Patterns:
-
-Enterprise Application Integration (EAI)
-Enterprise Application Management (EAM)
-Service-Oriented Architecture (SOA)
-Microservices
-
-Driven by: Application Integration:
-
-Connects several information systems
-Prevents that same functionality is implemented in different systems over and over again
-Complexity reduction / reduction of interfaces
-
-Data Integration:
-
-Summary of the data in a single data model
-Unified data management
-
-Process Integration:
-
-Integration of business processes
-
-Point-to-Point Integration:
-
-N(N-1) Interfaces
-1/2N(N-1) Interfaces
-
-Worst Case:
-
-The number of required interfaces square grows with the number of applications
-
-EAI by Middleware:
-
-Message-oriented or application-oriented
-
-ERP
-SCM
-Legacy System
-Middleware
-CRM
-Adapter
-
-There are only N interfaces needed for N applications.
-
-Enterprise Architecture Management (EAM):
-
-Extends EAI principles (technical base) with organizational and business aspects
-"IT follows business"
-"IT as enabler"
-EAM is located at the interface between business and technical aspects:
-Information systems
-Organizational and strategic aspects
-Additional focus:
-Functionality of information systems are being exposed as services
-Provided service orientation as a fundamental paradigm
-Services can be combined (SCA service component architecture)
-Use of standards for the:
-Description (interface description)
-Deployment (publication)
-Usage (protocol) of the services
-Used standards:
-WSDL WADL
-SOAP REST HTTP...
-
-Enhanced Business Process Orientation of Information Technology:
-
-Service Provider:
-
-Service Consumer:
-
-Service Registry:
-
-1. Publish
-2. Look up
-3. Find
-4. Bind / Call
-
-Objective: IT as a Service Provider:
-
-Flexibility:
-Faster response to changes in the business processes
-Reuse:
-Reduced redundancy
-Managing Complexity:
-Integration of heterogeneous application landscape
-Reducing fixed dependencies
-Loose coupling
-Transparency:
-Which functionality is available?
-Where is it used in the process?
-
-SOA:
-
-Service
-Service Bus
-Repository
-User Interface
-
-Interface Implementation:
-
-Contract includes both the description of the interface and the interface itself
-Specific technical implementation of functionality in software
-
-
+Group 4
+
+Group 5
+
+Result overall:
+select SUM(B.Price) As BookValue, Title from Book B group by Title
+
+BookValue, Title
+11,70, Chronicles: Volume
+0,00, Pride and Prejudice
+22,40, Getting Started with SQL: A Hands-On Approach for Beginners
+299,99, Essentials of MIS
+18,58, SQL Pocket Guide
+
+Processing Model for Queries(3)
+
+1. from-Clause
+...
+
+2. where-Clause (optional)
+...
+
+3. group by-Clause (optional)
+Organise group (execute clustering)
+
+4. having-Clause (optional)
+Removal of all records that do not meet the grouping condition
+
+5. select-Clause
+As usual, additionally performing the aggregate functions
+
+6. order by-Clause (optional)
+...
+
+CONCLUSION AND OUTLOOK
+
+Summary
+
+Data in relational databases can by queried by a standardized language named Structured Query Language (SQL)
+Advantage of SQL
+vendor independence
+adopts operations of relational algebra
+declarative query language (easier to learn)
+All common RDBMS support SQL
+
+Outlook
+
+How to query data in a database?
+Get data?
+Analyse data?
+There is a difference between
+frequently storing data and
+frequently querying/analysing data
+Consistency
+Referential consistency
+Consistency conditions and verifications
+Further topics
+SQL procedures, Views in databases, Triggers, Object relational structures, Data type definitions (beyond the standard), Non-relational databases, ...
+
+There are specialized systems to store and other specialized systems to analyse data / compute further results
+
+Sources
+
+Literature
+1. J. Gennick, SQL – Pocket Guise, O’Reilly, 2010.
+2. Wikibook SQL (in German): https://de.wikibooks.org/wiki/Einf%C3%BChrung_in_SQL
+
+Web
+3. Try SQL Statements (with Exercises in German): http://sqlcoach.informatik.hs-kl.de/sqlcoach/
+4. Look-Up of Statemens: http://www.w3schools.com/sql
+https://de.wikibooks.org/wiki/Einf%C3%BChrung_in_SQL
+http://sqlcoach.informatik.hs-kl.de/sqlcoach/
+http://www.w3schools.com/sql
+
+---
+
+Slides Overview:
+
+1. Computers in Business 4 Querying Data
+2. Learning Objectives
+3. Relational Databases
+4. Structured Query Language – SQL
+5. Standard Development
+6. Data Definition Language – DDL
+7. Create-Anweisung
+8. Create-Anweisung
+9. Exercise
+10. Datability
+11. Solution
+14. Data Control Language – DCL
+15. Data Manipulation Language – DML
+16. Select-Statement
+17. Processing Model for Queries (1)
+18. Processing Model for Queries (2)
+19. Example – Select
+20. Select-Statement – Sorting
+21. Exercise
+23. Select-Statement – Join Operator
+24. Example – Join
+25. Example – Join
+26. Functions & Aggregation
+27. Example – Function
+28. Select-Statement – Group by
+29. Example – Group by
+30. Example – Group by
+31. Example – Group by
+32. Processing Model for Queries(3)
+33. Conclusion and Outlook
+34. Summary
+35. Outlook
+36. Sources
+
+```
 Computers in Business
 
 2 Management of Information Systems
@@ -567,7 +360,7 @@ Depending on the chosen procedure model, further variants of team organization a
 
 Staff Project Organisation
 
-The companys line organization remains fully intact. The project management as a staff is responsible for coordinating tasks but does not have the power to make decisions or directives.
+The company's line organization remains fully intact. The project management as a staff is responsible for coordinating tasks but does not have the power to make decisions or directives.
 
 Pure Project Organization
 
@@ -585,13 +378,13 @@ IS Project phases
 
 An IS project is divided into individual phases of the project
 
-IS Project Phases - Requirements
+IS Project Phases – Requirements
 
 At the beginning of the project, the first important phase is the requirement survey (Requirements Engineering)
 Creating clarity about the requirements
 Involvement of all involved stakeholders (stakeholders)
 
-Individual software - Waterfall model
+Individual software – Waterfall model
 
 The waterfall model is a classic process model of software development.
 The development takes place in phases and
@@ -609,7 +402,7 @@ Agile Software Development is targeted towards efficient software development.
 Focus: reaching objectives and address relevant technical and social problems during development
 4 Values and 12 principles In the Agile Manifesto
 Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
-Welcome changing requirements, even late in development. Agile processes harness change for the customers competitive advantage.
+Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
 Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
 Business people and developers must work together daily throughout the project.
 Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
@@ -679,7 +472,7 @@ Important are the sound planning as well as the portfolio and project management
 Literature
 
 1. McMenamin, Palmer: Strukturierte Systemanalyse; Hanser, 1988.
-2. Bensberg, F.: Nutzwertanalyse; Enzyklopaedie der Wirtschaftsinformatik, Online-Lexikon, 2013, online im Internet: http://www.enzyklopaedie-der-wirtschaftsinformatik.de/
+2. Bensberg, F.: Nutzwertanalyse; Enzyklopädie der Wirtschaftsinformatik, Online-Lexikon, 2013, online im Internet: http://www.enzyklopaedie-der-wirtschaftsinformatik.de/
 
 Slides Overview:
 
@@ -690,8 +483,8 @@ Slides Overview:
 5. Individual Software
 6. Standard Software
 7. Variants of Standard Software
-8. Comparison of Individual and Standard Software
-9. Comparison Open Source and COTS
+8. Comparison of Individual & Standard Software
+9. Comparison Open Source & COTS
 10. Development of Individual Software
 11. Management
 12. From Strategy to Project
@@ -708,8 +501,8 @@ Slides Overview:
 23. Matrix Project Organization
 24. Procedure Models
 25. IS Project Phases
-26. IS Project Phases - Requirements
-27. Individual Software - Waterfall Model
+26. IS Project Phases – Requirements
+27. Individual Software – Waterfall Model
 28. Individual Software-Agile Software Development
 29. Individual Software-Agile Software Development
 30. Selection of Standard Software
@@ -718,7 +511,7 @@ Slides Overview:
 33. Summary
 34. Literature
 
-
+```
 Computers in Business
 
 3 Modelling Information Systems
@@ -760,7 +553,7 @@ is not identical to the original
 Limited picture of reality (General Model Theory, Stachowiak)
 Goal: Deduction of properties or behavior by analysis of model instead of original
 
-Model and Modelling
+Model & Modelling
 
 A model is a concrete or theoretical
 mapping of an existing system
@@ -783,7 +576,7 @@ exceptions
 
 Models have different degrees of precision: formal, semiformal and informal (e.g. natural language)
 
-Modelling - Approach and Process
+Modelling – Approach & Process
 
 Data-oriented
 Static structure of data in application area, relationships between pieces of data
@@ -794,7 +587,7 @@ Dynamic system behavior
 Object-oriented
 Structure and behavior of a system (special approach)
 
-Modelling - Information Systems
+Modelling – Information Systems
 
 Understand a system
 Communication between stakeholders
@@ -804,7 +597,7 @@ Conduct experiments
 
 Which may not be possible or allowed
 
-Modelling - Importance in Information Systems
+Modelling – Importance in Information Systems
 
 Complexity in Information Systems due to
 scope of the application domain
@@ -813,7 +606,7 @@ size and scope of the information system
 communication and coordination within the team
 information system is an immaterial product
 information system is alterable, usually more often than other technical products
-information system are difficult to "measure"
+information system are difficult to “measure”
 
 Models can help to develop information systems which actually fit the needs of their stakeholder
 
@@ -821,21 +614,21 @@ MODELS BY EXAMPLE
 
 Which aspects are important in models?
 
-Model - Example, Street Map
+Model – Example, Street Map
 
 Which presentation is appropriate?
 Overview of the German autobahn network
 Major highways
 Clear presentation
 
-Model - Example, Street Map
+Model – Example, Street Map
 
 Which presentation is appropriate?
 Map of Karlsruhe city center
 Major roads
 Not enough details
 
-Model - Example, Street Map
+Model – Example, Street Map
 
 Which presentation is appropriate?
 Detailed drawing (Rheinhafen Karlsruhe)
@@ -843,7 +636,7 @@ No information content
 Inadequate graphics
 Unusable
 
-Model - Example, Street Map
+Model – Example, Street Map
 
 Which presentation is appropriate?
 Map of Karlsruhe city center
@@ -851,7 +644,7 @@ Important Information
 Standardized symbols
 Simple navigation
 
-Model - Example, Street Map
+Model – Example, Street Map
 
 Which presentation is appropriate?
 Map of Karlsruhe city center
@@ -860,12 +653,12 @@ Nevertheless appropriate:
 Reasonable display
 For whom? For whom not?
 
-Reading and Discussion
+Reading & Discussion
 
 Read the poem "The Blind Men and the Elephant" by John Godfrey Saxe (1816-1887)
 key points / findings?
 
-Architecture - Field of Tension
+Architecture – Field of Tension
 
 Customer
 Marketing
@@ -876,9 +669,9 @@ Organisation
 Management
 Enduser
 
-Models - Different Views and Results
+Models – Different Views & Results
 
-Modelling - Challenges
+Modelling – Challenges
 
 Language conflicts
 homonyms, synonyms
@@ -891,7 +684,7 @@ compare and discuss models between different domains (disciplines)
 e.g. analysis vs. design models
 different knowledge, background, culture
 
-Modelling - Challenges
+Modelling – Challenges
 
 This lead to questions
 What is relevant for model creation?
@@ -917,7 +710,7 @@ incorporates further explanation on how to describe the architecture of informat
 includes definitions of concern, viewpoint and view
 many well-known architectural description approaches have been developed be usage of or have been influence the standard
 
-Views - Analysis of Information Systems
+Views – Analysis of Information Systems
 
 (based on known architectural frameworks)
 
@@ -936,7 +729,7 @@ System from a logical point of view
 
 System in its technical view
 
-Views - Context View
+Views – Context View
 
 Describes the system from the outside
 aspects which can be observed by a user / customer
@@ -948,7 +741,7 @@ external stakeholders (other systems and users)
 system itself (software to analyze)
 interfaces
 
-Views - Structural View
+Views – Structural View
 
 Describes the structure of the system (in its interior)
 Serves to describe
@@ -959,7 +752,7 @@ architectural elements (components)
 interfaces (technical description)
 relationships between architectural elements
 
-Views - Behavioural View
+Views – Behavioural View
 
 Describes the dynamic behavior of the system (in its interior)
 Serves to describe
@@ -969,7 +762,7 @@ Artifacts relevant for this view
 interactions (such as processes, inter-process communication)
 state descriptions
 
-Views - Deployment View
+Views – Deployment View
 
 Describes how artifacts, hardware or organisational units (e.g. teams) will be implemented and distributed
 Serves to describe
@@ -979,15 +772,15 @@ Artifacts relevant for this view
 resources (hardware and organizational units)
 architectural elements (in particular, components and systems)
 
-Kruchtens 4+1 Views
+Kruchten‘s 4+1 Views
 
 As one of the first, Philip Kruchten has described architecture views of application systems
 
 The ARIS Toolset
 
 ARIS "Architektur integrierter Informationssysteme"
-"Architecture of integrated information systems"
-ARIS Toolset developed 1992 by Prof. Scheer (University of Saarland, Saarbruecken)
+“Architecture of integrated information systems”
+ARIS Toolset developed 1992 by Prof. Scheer (University of Saarland, Saarbrücken)
 High degree of distribution in Germany
 Introduces and integrates four views on modeling of information systems
 Data
@@ -995,7 +788,7 @@ Functions
 Control (Processes)
 Organization
 
-ARIS - House of Business Engineering
+ARIS – House of Business Engineering
 
 SUMMARY AND CONCLUSION
 
@@ -1019,9 +812,9 @@ Sources
 
 Literature
 1. Stachowiak, H.: Allgemeine Modelltheorie; Springer Verlag, 1976.
-2. ISO/IEC/IEEE 42010:2011(E): ISO/IEC/IEEE Systems and software engineering - Architecture description’; Revision of ISO/IEC 42010:2007 and IEEE Std 1471-2000), pp. 1-46, 2011.
+2. ISO/IEC/IEEE 42010:2011(E): ISO/IEC/IEEE Systems and software engineering – Architecture description’; Revision of ISO/IEC 42010:2007 and IEEE Std 1471-2000), pp. 1–46, 2011.
 3. Kruchten, P.B.: The 4+1 View Model of architecture. In: IEEE Software. 12, Nr. 6, 1995, online im Internet: doi:10.1109/52.469759
-4. G. Keller, M. Nuettgens, A.-W. Scheer: Semantische Prozessmodellierung auf der Grundlage "Ereignisgesteuerter Prozessketten (EPK)", Veroeffentlichungen des Instituts fuer Wirtschaftsinformatik (IWi), Universitaet des Saarlandes, Heft 89, 1992.
+4. G. Keller, M. Nüttgens, A.-W. Scheer: Semantische Prozeßmodellierung auf der Grundlage "Ereignisgesteuerter Prozeßketten (EPK)", Veröffentlichungen des Instituts für Wirtschaftsinformatik (IWi), Universität des Saarlandes, Heft 89, 1992.
 
 Video
 1. A 3D atlas of the universe - Carter Emmart: https://www.youtube.com/watch?v=MlOjSQeO1Dg
@@ -1031,7 +824,7 @@ Video
 
 Additional Literature
 1. The Open Group: ArchiMate 3.0 Specification; online im Internet: http://pubs.opengroup.org/architecture/archimate3-doc/toc.html
-2. Arc42: Ressourcen fuer Softwarearchitekten; online im Internet: http://www.arc42.de/
+2. Arc42: Ressourcen für Softwarearchitekten; online im Internet: http://www.arc42.de/
 3. M. Weske. Business Process Management: Concepts, Languages, Architectures. Springer-Verlag (2007).
 
 Slides Overview:
@@ -1041,40 +834,39 @@ Slides Overview:
 3. Modelling
 4. Purpose of Modelling
 5. Model
-6. Model and Modelling
+6. Model & Modelling
 7. Aspects of Models 
-8. Modelling - Approach and Process 
-9. Modelling - Information Systems 
-10. Modelling - Importance in Information Systems 
+8. Modelling – Approach & Process 
+9. Modelling – Information Systems 
+10. Modelling – Importance in Information Systems 
 11. Models by Example 
-12. Model - Example, Street Map 
-13. Model - Example, Street Map 
-14. Model - Example, Street Map 
-15. Model - Example, Street Map 
-16. Model - Example, Street Map 
-17. Reading and Discussion 
-18. Architecture - Field of Tension 
-19. Models - Different Views and Results  
-20. Modelling - Challenges  
-21. Modelling - Challenges 
+12. Model – Example, Street Map 
+13. Model – Example, Street Map 
+14. Model – Example, Street Map 
+15. Model – Example, Street Map 
+16. Model – Example, Street Map 
+17. Reading & Discussion 
+18. Architecture – Field of Tension 
+19. Models – Different Views & Results  
+20. Modelling – Challenges  
+21. Modelling – Challenges 
 22. The View Concept 
 23. View Models 
-24. Views - Analysis of Information Systems 
-25. Views - Context View 
-26. Views - Structural View 
-27. Views - Behavioural View  
-28. Views - Deployment View  
-29. Kruchtens 4+1 Views 
+24. Views – Analysis of Information Systems 
+25. Views – Context View 
+26. Views – Structural View 
+27. Views – Behavioural View  
+28. Views – Deployment View  
+29. Kruchten‘s 4+1 Views 
 30. The ARIS Toolset  
-31. ARIS - House of Business Engineering 
-32. ARIS - House of Business Engineering 
+31. ARIS – House of Business Engineering 
+32. ARIS – House of Business Engineering 
 33. Summary and conclusion 
 34. Summary 
 35. Outlook 
 36. Sources 
 37. Sources 
-
-
+```
 Computers in Business
 
 4 Business Process Modelling
@@ -1093,11 +885,11 @@ BUSINESS PROCESS MODELLING
 
 Which notations are available (to cover control view)? How do these notations differ?
 
-ARIS - House of Business Engineering
+ARIS – House of Business Engineering
 
 Physical DB Schema, Logical DB Schema: Relations, Data model: ERM, Data Control Functions, Organization, Organizational Model, Net Topology, Physical Network, Program Code, Modules, Structural Diagrams, Function Model: Hierarchy, Resource Allocation, Program Control, Triggers, Distributed DB, Process Model BPMN, EPC, Petri Nets.
 
-Business Process Modelling - Languages
+Business Process Modelling – Languages
 
 In industry and science a lot of different languages to model business processes exist
 Business Process Model and Notation (BPMN)
@@ -1110,15 +902,15 @@ BPMN is an international standard
 maintained by Object Management Group (OMG)
 visit bpmn.org to download the complete specification of BPMN 2.0 and to retrieve some interesting examples.
 
-BPMN - Introduction
+BPMN – Introduction
 
 A graphical notation for business process modeling defines symbols of various process elements and their possible combinations (syntax) as well as their correct meaning (semantics).
 Thus, a notation is a standardized language for the description of business processes.
 
-BPMN - Goal and Intention
+BPMN – Goal & Intention
 
-"The primary goal of BPMN is to provide a notation that is readily understandable by all business users, from the business analysts that create the initial draft of the processes, to the technical developers responsible for implementing the technology that will perform these processes, and finally to the business people who will manage and monitor those processes."
-"The idea is to create a standardized bridge for the gap between the business process design and process implementation."
+“The primary goal of BPMN is to provide a notation that is readily understandable by all business users, from the business analysts that create the initial draft of the processes, to the technical developers responsible for implementing the technology that will perform these processes, and finally to the business people who will manage and monitor those processes.”
+“The idea is to create a standardized bridge for the gap between the business process design and process implementation.”
 
 History of BPMN
 
@@ -1130,7 +922,7 @@ The vendors recognized a need of a graphical language representation oriented to
 
 BPMN 1.2 vs BPMN 2.0
 
-BPMN 1.2 provides a mapping from a "valid" BPMN diagram to BPEL, such that an engine can execute the process.
+BPMN 1.2 provides a mapping from a “valid” BPMN diagram to BPEL, such that an engine can execute the process.
 The 1.2 specification includes only verbal descriptions of the elements and modeling rules. This leads to confusions in the translation process.
 BPMN 2.0 beta 2 was introduced in June 2010.
 It represented the biggest revision of BPMN since its inception.
@@ -1205,8 +997,8 @@ Conversation Diagrams
 The Conversation diagram is an informal description of a Collaboration diagram
 In general, it is a simplified version of Collaboration
 Conversation Link connect ConversationNodes to and from Participants
-Conversation - Set of related messages
-Conversation - Set of conversations
+Conversation – Set of related messages
+Conversation – Set of conversations
 
 BPMN BASIC CONCEPTS
 
@@ -1226,7 +1018,7 @@ Recommendation: a single incoming and a single outgoing sequence flow.
 In this lecture: Each process must have always at least a start event (a circle with a thin border) and an end event (a circle with a thick border)
 Indicates where a process instance can be started and completed.
 
-Model Execution - Process Instances
+Model Execution – Process Instances
 
 Once a process instance has been created, we use the notion of token to identify the progress (or state) of that instance.
 A token is created in the start event, traverses the sequence flow and is destroyed in an end event.
@@ -1235,11 +1027,11 @@ It is currently no formal part of the BPMN specification
 Can be compared to tokens in Petri Nets
 No time is associated with token traversal
 
-Model Execution - Process Instances
+Model Execution – Process Instances
 
 Once a process instance has been created, we use the notion of token to identify the progress (or state) of that instance.
 
-BPMN - Order Management Process
+BPMN – Order Management Process
 
 Exclusive Gateways
 Activities
@@ -1271,7 +1063,7 @@ Provide a mechanism to create parallel flows (AND-split) and to synchronize para
 Activities inside parallel splits can be executed concurrently (independently).
 Depicted by a diamond shape that must contain a marker that is shaped like a plus sign.
 
-Exclusive Gateways - Splitting Behaviour
+Exclusive Gateways – Splitting Behaviour
 
 Exclusive gateways split a sequence flow in two or more alternative paths.
 Criteria for decision are represented as conditions on each of the outgoing sequence flow
@@ -1284,7 +1076,7 @@ One possibility to ensure that the process will not get starve at an exclusive g
 The default condition can complement a set conditions to provide an automatic escape mechanism (in case all the standard conditions evaluate to false).
 The default condition has the meaning of otherwise, and it can be left unlabeled.
 
-Exclusive Gateways - Merging Behaviour
+Exclusive Gateways – Merging Behaviour
 
 When a token arrives at the exclusive join gateway, there is no evaluation of conditions (on the incoming sequence flow). The token immediately proceeds the outgoing sequence flow.
 
@@ -1299,17 +1091,17 @@ there are mismatches but these can be corrected, in which case the invoice is re
 there are mismatches but these cannot be corrected, in which case the invoice is blocked.
 Once one of these three options was performed the invoice is parked and the process completes.
 
-Parallel Gateways - Splitting Behaviour
+Parallel Gateways – Splitting Behaviour
 
 When a token arrives at a parallel gateway, no evaluation of conditions takes place
 The parallel gateway will create parallel paths.
 This means on each outgoing sequence flow a token will be created.
 
-Parallel Gateways - Merging Behaviour
+Parallel Gateways – Merging Behaviour
 
 The parallel gateway will synchronize sequence flows
 Waits for a token to arrive on each incoming sequence flow
-When a token arrives, it is "held" at the gateway and does not proceed until token have arrived on all incoming sequence flows.
+When a token arrives, it is “held” at the gateway and does not proceed until token have arrived on all incoming sequence flows.
 Once all tokens have arrived, they are merged and one token proceeds through the outgoing sequence flow.
 
 Exercise
@@ -1329,16 +1121,16 @@ To model situations where a decision may lead to one or more options being taken
 An OR-split is similar to the XOR-split, but the conditions on its outgoing branches do not need to be mutually exclusive, i.e. more than one of them can be true at the same time.
 When we encounter an OR-split, we thus take one or more branches depending on which conditions are true.
 
-Inclusive Gateways - Splitting Behaviour
+Inclusive Gateways – Splitting Behaviour
 
 Support decisions where more than one outcome is possible
 At least one must evaluated to true
 May create one or more paths based on associated conditions
 In terms of tokens: Every condition that evaluates to true will result in a token passing the corresponding sequence flow
 
-Inclusive Gateways - Merging Behaviour
+Inclusive Gateways – Merging Behaviour
 
-When a token arrives at the gateway, the gateway will take a "look" upstream for each of the other incoming sequence flows and check if there is a token that might arrive at a later time
+When a token arrives at the gateway, the gateway will take a “look” upstream for each of the other incoming sequence flows and check if there is a token that might arrive at a later time
 The gateway will hold tokens that arrive until all other tokens have arrived.
 When all the expected tokens have arrived at the gateway, the process flow will be synchronized (and proceed)
 
@@ -1384,12 +1176,12 @@ IMPORTANT ASPECTS OF BUSINESS PROCESSES
 
 Besides control flow, which aspects are relevant to execute a business process properly?
 
-Workflow-Management (WFM) - deals with handle cases (process instances)
+Workflow-Management (WFM) – deals with handle cases (process instances)
 
-Task - Declaration of What has to be done
-Work Item - Task that needs to be executed to handle a specific case
-Resources - Are responsible or utilized to execute a Work Item
-Activity - Work item executed by a specific resource (How)
+Task – Declaration of What has to be done
+Work Item – Task that needs to be executed to handle a specific case
+Resources – Are responsible or utilized to execute a Work Item
+Activity – Work item executed by a specific resource (How)
 
 Workflow Dimensions
 
@@ -1421,28 +1213,28 @@ Classification based on the organization’s structure (e.g., the administration
 Resource Modelling in BPMN
 
 In BPMN resources are out of scope! Specification says:
-Section 7.1: "...the following are aspects that are out of the scope of this specification:
-Definition of organizational models and resources ...
-Data and information models"
+Section 7.1: “…the following are aspects that are out of the scope of this specification:
+Definition of organizational models and resources …
+Data and information models”
 Really out of scope?
-Section 8.3.12: "The Resource class is used to specify resources that can be referenced by Activities. These Resources can be Human Resources as well as any other resource assigned to Activities during Process execution time. The definition of a Resource is "abstract," because it only defines the Resource, without detailing how e.g., actual user IDs are associated at runtime. Multiple Activities can utilize the same Resource."
+Section 8.3.12: “The Resource class is used to specify resources that can be referenced by Activities. These Resources can be Human Resources as well as any other resource assigned to Activities during Process execution time. The definition of a Resource is “abstract,” because it only defines the Resource, without detailing how e.g., actual user IDs are associated at runtime. Multiple Activities can utilize the same Resource.”
 
 Resource Modelling in BPMN
 
 Often Pools and Lanes are used to model resources
-Section 9.2: "A Pool is the graphical representation of a Participant in a Collaboration. A Participant (see page 114) can be a specific PartnerEntity (e.g., a company) or can be a more general PartnerRole (e.g., a buyer, seller, or manufacturer). A Pool MAY or MAY NOT reference a Process. A Pool is NOT REQUIRED to contain a Process, i.e., it can be a "black box.""
+Section 9.2: “A Pool is the graphical representation of a Participant in a Collaboration. A Participant (see page 114) can be a specific PartnerEntity (e.g., a company) or can be a more general PartnerRole (e.g., a buyer, seller, or manufacturer). A Pool MAY or MAY NOT reference a Process. A Pool is NOT REQUIRED to contain a Process, i.e., it can be a “black box.””
 
-Section 10.7: "Lanes are used to organize and categorize Activities within a Pool. The meaning of the Lanes is up to the modeler."
+Section 10.7: “Lanes are used to organize and categorize Activities within a Pool. The meaning of the Lanes is up to the modeler.”
 
 Resource Modelling in BPMN
 
 Often Pools and Lanes are used by modellers as follows:
 Pools
 represent independent organizational units in collaborative process models; e.g., customer and supplier
-BPMN Specification: "A Pool acts as the container for the Sequence Flows between Activities The Sequence Flows ... cannot cross the boundaries of a Pool ... interaction between Pools is shown through Message Flows."
+BPMN Specification: “A Pool acts as the container for the Sequence Flows between Activities The Sequence Flows … cannot cross the boundaries of a Pool … interaction between Pools is shown through Message Flows.”
 Lanes
 represent resource classes or roles in the same organizational unit; e.g., sales and marketing department of a company may be represented in different lanes of the same pool.
-BPMN Specification: "The Sequence Flows can cross the boundaries between Lanes of a Pool"
+BPMN Specification: “The Sequence Flows can cross the boundaries between Lanes of a Pool”
 
 Pools and Lanes
 
@@ -1453,7 +1245,7 @@ A Message Flow MUST connect two separate Pools. They connect either to the Pool 
 Thus, message flow is only used in collaborations (diagrams with two or more pools).
 Sequence flow cannot cross a pool boundary.
 
-Example - Order Management Process with Pools
+Example – Order Management Process with Pools
 
 Lanes
 
@@ -1464,7 +1256,7 @@ Often indicate which organization roles have responsibility for carrying out act
 Sequence flow can cross Lane boundaries
 Message flow is not used within or across lanes of a pool
 
-Pools - As Black Box
+Pools – As Black Box
 
 A pool is not required to contain flow elements. Known as a black box, these pools do not show activities or sequence flow inside its boundary.
 When the Pool is depicted as black box, Message Flow connects to its boundary. 
@@ -1495,10 +1287,10 @@ May have states that depict how the object is updated within the process.
 Using the state within multiple locations in a diagram, the modeler can document changes of a data object throughout a process.
 Data Input, Data Output, DataObject, DataObject as collection, Data Store, Directed association, Undirected association
 
-Data Objects - Exemplified
+Data Objects – Exemplified
 
 Equivalent notation below
-When a data association is "executed," data is copied to the target. What is copied depends if there is a transformation defined or not.
+When a data association is “executed,” data is copied to the target. What is copied depends if there is a transformation defined or not.
 Association may be directed with DataInputAssociation and DataOutputAssociation
 Alternatively, Data Objects may be directly associated with a Sequence Flow
 
@@ -1509,7 +1301,7 @@ Input data objects are required for an activity to be executed. Even if a token 
 Assignment class is used to specify a simple mapping of data elements using a specified Expression language.
 The default Expression is specified in the Definitions element, using the expressionLanguage attribute.
 
-Example - Order Management Process
+Example – Order Management Process
 
 Exercise
 
@@ -1519,7 +1311,7 @@ BPMN Elements Recap
 
 Connections
 Basic Flow Objects
-Organisation and Artifacts
+Organisation & Artifacts
 Task, Event, Gateway, Group, Lane, Pool, Data Store, Annotation
 
 BPMN - ADVANCED CONCEPTS
@@ -1564,7 +1356,7 @@ Service: Links to some sort of service, which could be a web service or an autom
 Script: Performs a modeler-defined script.
 Manual: A non-automated task that a human performer undertakes outside of the control of the workflow or PMS engine.
 
-Specialized Task Types - Multiple Execution
+Specialized Task Types – Multiple Execution
 
 Activities may be repeated sequentially or concurrently essentially behaving like a loop or like multiple instances
 
@@ -1611,29 +1403,29 @@ Start Events
 A Start Event indicates where a process can begin.
 Circle with a single, thin lined boundary
 There are different types of Start Events to indicate the varying circumstances that can trigger the start of a Process.
-These circumstances, such as the arrival of a message," are called triggers.
+These circumstances, such as the arrival of a message,” are called triggers.
 A Start Event can only have outgoing sequence flows.
 Note: There are other event types, also events may be non-interrupting. In the latter case their boundary is dashed.
 Start Events create tokens
 When a Start Event is triggered, the token is generated.
 
-Example - Timer Start Event
+Example – Timer Start Event
 
 A Timer Start Event indicates that the Process is started when a specific time condition has occurred.
 Could be a specific date and time (e.g., July 16, 2015 at 8am) or a recurring time (e.g., every Monday at 8am).
 
-Example - Message Start Event
+Example – Message Start Event
 
 The Message Start Event represents a situation where a Process is initiated by the reception of a message.
 Means: direct communication between two business participants.
 
-Example - Signal Start Event
+Example – Signal Start Event
 
 Indicates that the Process is started when a signal is detected.
 Signal: is a broadcast communication from a business participant or another process. Signals have no specific target or recipient.
 Signals may be used within a single process.
 
-Example - Conditional Start Event
+Example – Conditional Start Event
 
 Conditional Start Event represents a situation where a process is started when a pre-defined condition becomes true.
 A condition can be specified in the default expression language.
@@ -1651,7 +1443,7 @@ When a token arrives at an End Event, the token is consumed as the result of thi
 It is possible that one or more paths that continue even after the token in one path has reached an End Event and has been consumed.
 If it contains unconsumed tokens, the process is active. If all tokens have reached an End Event, the process is completed.
 
-Example - Terminate End Event
+Example – Terminate End Event
 
 Will cause the immediate cessation of the process instance and all of its sub-processes
 It will not terminate a higher-level parent process.
@@ -1665,7 +1457,7 @@ Each type of Intermediate Events can either throw or catch the event.
 Catch means it waits for something to happen
 Throw means immediately fires a trigger
 
-Intermediate Events Behaviour - Catch
+Intermediate Events Behaviour – Catch
 
 Tokens arriving at a catch Intermediate Event wait until the trigger occurs.
 A Catching Intermediate Event (except than the Link Event) can also be attached to the boundary of an Activity.
@@ -1674,7 +1466,7 @@ When the activity starts, so does the timer.
 If the activity finishes first, then it completes normally and the process continues.
 If the timer goes off before the activity is completed, it is interrupted immediately and the process flow proceeds from the timer.
 
-Intermediate Events Behaviour - Throw
+Intermediate Events Behaviour – Throw
 
 Indicated by a filled marker
 A token arriving at a throw Intermediate Event will immediately fire the trigger.
@@ -1686,7 +1478,7 @@ When a token arrives at a throwing Message Intermediate Event, it immediately tr
 When a token arrives at a catching Message Intermediate Event, the process pauses until a message arrives.
 If the token is waiting at the Intermediate Event and the message arrives, then the event is triggered.
 
-Example - Events
+Example – Events
 
 Link Intermediate Event
 
@@ -1699,7 +1491,7 @@ Using a pair of Link Events creates a virtual Sequence Flow.
 There can be only one target, but there may be multiple sources.
 Once the source event is triggered (the throw), the token immediately jumps to the target (the catch)
 
-Example - Multiple Intermediate Events
+Example – Multiple Intermediate Events
 
 Gateways
 
@@ -1731,8 +1523,8 @@ The Gateway uses the synchronization semantics of the Inclusive Gateway.
 
 Exercise
 
-Design an expense reimbursement process. This process provides reimbursement of expenses incurred by employees for the company. For example taking part in an external meeting, buying a technical book, office supplies or software. In a normal day there are several hundreds of instances of this process created. Concentrate on the basic flow of the Process...
-"After the reception of a (meeting) reminder, a new account must be created if the employee does not already have one. The report is then reviewed for automatic approval. Amounts under $200 are automatically approved, whereas amounts equal to or over $200 require approval of the supervisor. In case of rejection, the employee must receive a rejection notice by email. The reimbursement goes to the employee’s deposit bank account. If the request is not completed in 7 days, then the employee must receive an approval in progress email If the request is not finished within 30 days, then the process is stopped and the employee may initiate the request again."
+Design an expense reimbursement process. This process provides reimbursement of expenses incurred by employees for the company. For example taking part in an external meeting, buying a technical book, office supplies or software. In a normal day there are several hundreds of instances of this process created. Concentrate on the basic flow of the Process…
+“After the reception of a (meeting) reminder, a new account must be created if the employee does not already have one. The report is then reviewed for automatic approval. Amounts under $200 are automatically approved, whereas amounts equal to or over $200 require approval of the supervisor. In case of rejection, the employee must receive a rejection notice by email. The reimbursement goes to the employee’s deposit bank account. If the request is not completed in 7 days, then the employee must receive an approval in progress email If the request is not finished within 30 days, then the process is stopped and the employee may initiate the request again.”
 
 Possible Solution
 
@@ -1759,7 +1551,7 @@ Generally done by events attached to activities (task or sub-process).
 A thrown exception has a specific scope of visibility.
 Can only be seen by a parent Process.
 
-Exception Handling - Behaviour
+Exception Handling – Behaviour
 
 Transactions
 
@@ -1767,18 +1559,18 @@ Transaction is a set of activities that logically belong together.
 To succeed, all necessary activities have to be completed.
 If any of them fails to complete, the transaction cancels. It might be necessary that all work which has been completed is withdrawn.
 
-Transactions - Basic Results
+Transactions – Basic Results
 
 Successful completion: will be shown as a normal Sequence Flow that leaves the Transaction Sub-Process.
 
-Transactions - Basic Results
+Transactions – Basic Results
 
 Failed completion (Cancel): Activities inside will be subjected to the cancellation actions. May include rolling back and compensation
 Note other interrupts (e.g., Error or Timer) will not cause compensation
 A Cancel Intermediate Event, attached to the boundary of the Activity, will direct the flow after the Transaction has been rolled back and all compensation has been completed.
 Cancel Events cannot be used in any normal flow and cannot be attached to a non-Transaction Sub-Process.
 
-Transactions - Basic Results
+Transactions – Basic Results
 
 Hazard: something went terribly wrong and normal success or cancel is not possible.
 Error Intermediate Events are used to show Hazards.
@@ -1802,28 +1594,28 @@ The throw is used in normal flow (to trigger compensation).
 The Compensation End Event can specify an Activity for compensation handling.
 If no Activity is identified, all successfully completed Activities visible from the Compensation Intermediate Event are compensated, in reverse order of their Sequence Flows.
 
-Transaction Sub-Process - Hazard
+Transaction Sub-Process – Hazard
 
 All work within the sub-process is terminated immediately
 There is no compensation
 The transaction is interrupted
 Errors will be sent through the transaction protocol.
 
-Transaction Sub-Process - Cancellation
+Transaction Sub-Process – Cancellation
 
 Cancellation is initiated through
 an event of the sub-process or
 (externally) by cancellation sent through transaction protocol
 The Cancel Intermediate Event attached to the boundary is triggered
 
-Transaction Sub-Process - Cancellation and Compensation
+Transaction Sub-Process – Cancellation & Compensation
 
 Completed work may need to be undone (roll back) before the parent process can continue.
 In reverse order for each completed activity, it is checked if it requires compensation
 Activity associated to an attached Intermediate Compensation Event
 A token is used to trace this roll back procedure
 
-Transaction Sub-Process - Cancellation and Compensation
+Transaction Sub-Process – Cancellation & Compensation
 
 Compensation is completed, when all activities of the Transaction Sub-Process have been checked (and
 compensated)
@@ -1865,7 +1657,7 @@ When to use a formal language?
 Sources
 
 Literature
-1. G. Keller, M. Nuettgens, A.-W. Scheer: Semantische Prozessmodellierung auf der Grundlage "Ereignisgesteuerter Prozessketten (EPK)", Veroeffentlichungen des Instituts fuer Wirtschaftsinformatik (IWi), Universitaet des Saarlandes, Heft 89, available at: uni-saarland.de, 1992.
+1. G. Keller, M. Nüttgens, A.-W. Scheer: Semantische Prozeßmodellierung auf der Grundlage "Ereignisgesteuerter Prozeßketten (EPK)", Veröffentlichungen des Instituts für Wirtschaftsinformatik (IWi), Universität des Saarlandes, Heft 89, available at: uni-saarland.de, 1992.
 2. OMG. BPMN 2.0 specification, available at: OMG.org, 2011.
 3. W. van der Aalst and K. van Hee, Workflow Management: Models, Methods, and Systems, New Ed. Cambridge, Mass.: Information Systems, 2004.
 
@@ -1873,7 +1665,7 @@ Video
 4. BPMN 2.0 - Grundelemente (Tutorial Part 1): YouTube
 5. What is BPMN 2.0? (and list of further videos): YouTube
 
-
+```
 Computers in Business
 
 5 Modelling Data
@@ -1896,7 +1688,7 @@ Who can data be processed and analysed?
 Which benefit can information systems generate with data?
 Which requirements have to be met to process data?
 
-ARIS - House of Business Engineering
+ARIS – House of Business Engineering
 
 Physical DB
 Schema
@@ -1925,7 +1717,7 @@ BPMN, EPC,
 Petri Nets
 Remember,
 this is where
-we are...
+we are…
 
 Data in Information Systems
 
@@ -1935,7 +1727,7 @@ Why can’t we just use ordinary files?
 Which requirements are not met by files?
 Hint: think of a Word document...
 
-Data - Expected Characteristics
+Data – Expected Characteristics
 
 Persistence
 data can be stored permanently (e.g. over the decades)
@@ -1962,7 +1754,7 @@ DATA MODELLING
 How to meet the requirements?
 How to properly model and implement data structures?
 
-Entity Relationship Model - ERM
+Entity Relationship Model – ERM
 
 Describes inter-related things of interest in a specific domain of
 knowledge.
@@ -1973,10 +1765,10 @@ Developed for database design by Peter Chen [1]
 ERM is typically derived from verbal real world descriptions
 represents interesting aspects a information system has to process
 
-An entity-relationship model is the result of systematic analysis
+An entity–relationship model is the result of systematic analysis
 to define and describe which aspects are important in processes
 
-Entity Relationship Model - Views on Data
+Entity Relationship Model – Views on Data
 
 According Chen [1], there are four views on data:
 Three levels of ER diagrams are common in modelling
@@ -1987,19 +1779,19 @@ includes more details (problem oriented)
 Physical data model
 to instantiate a database
 
-Entity Relationship Model - Entities
+Entity Relationship Model – Entities
 
 Entity = an object of the domain in our business focus
 Entity type = a set of entities with similar (common) attributes
 Examples
-Entities: Mueller GmbH, Schulz OHG
+Entities: Müller GmbH, Schulz OHG
 Entity type: Supplier
 Graphical Notation
 
 In the original
 article called set
 
-Entity Relationship Model - Relationships
+Entity Relationship Model – Relationships
 
 Relationship = a relation between two (or more) entities
 Relationship type = a relation between two (or more) entity types
@@ -2019,13 +1811,13 @@ Examples
 Address / Street / Account-No.
 Graphical Notation
 
-Entity Relationship Model - Attributes
+Entity Relationship Model – Attributes
 
 Primary Key
 Required Multiple
 Derived
 
-Entity Relationship Model - Association
+Entity Relationship Model – Association
 
 Associations are needed to support graphical notation
 Underlying maths does not need this concept
@@ -2034,16 +1826,16 @@ notation of multiplicities
 indicate roles (of relationships)
 Graphical Notation
 
-Entity Relationship Model - Example
+Entity Relationship Model – Example
 
 Role name
 Cardinality
 
-Entity Relationship Model - Development
+Entity Relationship Model – Development
 
 ERM’s are typically derived from natural language
 documents
-discussion (interviews, workshops,...)
+discussion (interviews, workshops,…)
 Chen [2] suggests some basic translation rules
 
 English grammar ER structure
@@ -2062,7 +1854,7 @@ Each employee has a employee number. A 40-year-old person who
 works for the department, also works on a project with project number
 2175 for 20% of his time.
 
-Entity Relationship Model - Cardinality
+Entity Relationship Model – Cardinality
 
 The cardinality represents multiplicities in relationship types
 Interpretation: read entity set, relationship set, cardinality at opposite entity
@@ -2077,7 +1869,7 @@ for one department
 In an department work
 several employees
 
-Entity Relationship Model - Cardinality
+Entity Relationship Model – Cardinality
 
 Additional cardinality constraints are expressed as follows:
 a double line of an association indicates a participation constraint
@@ -2114,7 +1906,7 @@ RELATIONAL DATABASES
 
 How to implement ERM in information systems?
 
-Databases - Management View?
+Databases – Management View?
 
 Transformation to Relational Model
 
@@ -2154,6 +1946,35 @@ Vendors of databases often provide extensions to
 SQL standard or
 modify parts of it
 
+Relation R
+
+A relation is formally
+a named (𝑛𝑎𝑚𝑒) subset (𝑀)
+of a flat Cartesian product of types 𝐴1 to 𝐴𝑛,
+where each type 1, … , 𝑛 is associated with a unique name (𝑠𝑛𝑎𝑚𝑒).
+The (quite horribly) formal notation for this is:
+Let 𝑀 ⊆ 𝐴1 × ⋯ × 𝐴𝑛 and 𝑠𝑛𝑎𝑚𝑒 an injective function, then 𝑅 is:
+𝑅 = (𝑛𝑎𝑚𝑒 ∈ 𝑠𝑡𝑟𝑖𝑛𝑔, 𝐴1, … , 𝐴𝑛 , 𝑠𝑛𝑎𝑚𝑒: 1, … 𝑛 → 𝑠𝑡𝑟𝑖𝑛𝑔, 𝑀)
+
+...this is very abstract - but what does that mean in practice?
+
+One can imagine relations best as filled named tables with named
+columns
+in each column may be only values of a certain type.
+figuratively this makes:
+a database a set of tables, with data in those tables and dependencies
+between them.
+
+Relation R
+
+Example: Relation Persons
+Textual representation
+( "𝑃𝑒𝑟𝑠𝑜𝑛𝑠",
+(𝑠𝑡𝑟𝑖𝑛𝑔, 𝑠𝑡𝑟𝑖𝑛𝑔, 𝑑𝑎𝑡𝑒, 𝑖𝑛𝑡),
+{(1, "𝑁𝑎𝑚𝑒"), (2, "𝑆𝑢𝑟𝑛𝑎𝑚𝑒"), (3, "𝐷𝑎𝑡𝑒𝑂𝑓𝐵𝑖𝑟𝑡ℎ"), (4, "𝐻𝑒𝑖𝑔ℎ𝑡")},
+{("𝐷𝑎𝑛𝑖𝑒𝑙", "𝑃𝑓𝑒𝑖𝑓𝑒𝑟", 10.
+02.1973, 189),
+("𝑀𝑎𝑟𝑡𝑖𝑛", "𝐻𝑎𝑎𝑔", 04.12.1969, 181), … } )
 
 Name Surname DateOfBirth Height
 Daniel Pfeifer 10.02.1973 189
@@ -2167,7 +1988,11 @@ Attribute name
 Tupel
 Relation
 
+Relation R
 
+Example: Relation Persons
+Textual short representation
+𝑃𝑒𝑟𝑠𝑜𝑛𝑠(𝑁𝑎𝑚𝑒, 𝑆𝑢𝑟𝑛𝑎𝑚𝑒, 𝐷𝑎𝑡𝑒𝑂𝑓𝐵𝑖𝑟𝑡ℎ, 𝐻𝑒𝑖𝑔ℎ𝑡)
 
 Name Surname DateOfBirth Height
 Daniel Pfeifer 10.02.1973 189
@@ -2238,12 +2063,12 @@ specialized systems to analyse data / compute further results
 Sources
 
 Literature
-1. P. P.-S. Chen, The Entity-relationship Model—Toward a Unified View of
-Data’, ACM Trans. Database Syst., vol. 1, no. 1, pp. 9-36, Mar. 1976.
-2. P. P.-S. Chen, English sentence structure and entity-relationship
-diagrams’, Information Sciences, vol. 29, no. 2-3, pp. 127-149, 1983.
-3. E. F. Codd, A Relational Model of Data for Large Shared Data Banks’,
-Commun. ACM, vol. 13, no. 6, pp. 377-387, Jun. 1970.
+1. P. P.-S. Chen, ‘The Entity-relationship Model—Toward a Unified View of
+Data’, ACM Trans. Database Syst., vol. 1, no. 1, pp. 9–36, Mar. 1976.
+2. P. P.-S. Chen, ‘English sentence structure and entity-relationship
+diagrams’, Information Sciences, vol. 29, no. 2–3, pp. 127–149, 1983.
+3. E. F. Codd, ‘A Relational Model of Data for Large Shared Data Banks’,
+Commun. ACM, vol. 13, no. 6, pp. 377–387, Jun. 1970.
 4. K. C. Laudon and J. P. Laudon, Essentials of MIS, 11 edition. Boston:
 Pearson, 2014.
 
@@ -2258,7 +2083,7 @@ https://www.youtube.com/watch?v=iKK3P11OCyM
 Sources
 
 Additional Literature
-6. U. Fayyad, G. Piatetsky-Shapiro, and P. Smyth, From data mining to
+6. U. Fayyad, G. Piatetsky-Shapiro, and P. Smyth, ‘From data mining to
 knowledge discovery in databases’, AI magazine, vol. 17, no. 3, p. 37,
 1996.
 
@@ -2267,26 +2092,26 @@ Slides Overview:
 1. Computers in Business 5 Modelling Data
 2. Learning Objectives
 3. Data in Information Systems
-4. ARIS - House of Business Engineering
+4. ARIS – House of Business Engineering
 5. Data in Information Systems
 6. Exercise
-7. Data - Expected Characteristics
+7. Data – Expected Characteristics
 8. Data Modelling
-9. Entity Relationship Model - ERM
-10. Entity Relationship Model - Views on Data
-11. Entity Relationship Model - Entities
-12. Entity Relationship Model - Relationships
-13. Entity Relationship Model - Attributes
-14. Entity Relationship Model - Association
-15. Entity Relationship Model - Example
-16. Entity Relationship Model - Example
-17. Entity Relationship Model - Development
+9. Entity Relationship Model – ERM
+10. Entity Relationship Model – Views on Data
+11. Entity Relationship Model – Entities
+12. Entity Relationship Model – Relationships
+13. Entity Relationship Model – Attributes
+14. Entity Relationship Model – Association
+15. Entity Relationship Model – Example
+16. Entity Relationship Model – Example
+17. Entity Relationship Model – Development
 18. Exercise
-21. Entity Relationship Model - Cardinality
-22. Entity Relationship Model - Cardinality
+21. Entity Relationship Model – Cardinality
+22. Entity Relationship Model – Cardinality
 23. Exercise
 25. Relational Databases
-26. Databases - Management View?
+26. Databases – Management View?
 27. Transformation to Relational Model
 28. Relational Database
 29. Relation R
@@ -2302,7 +2127,7 @@ Slides Overview:
 41. Sources
 42. Sources
 
-
+```
 Computers in Business
 
 4 Querying Data
@@ -2323,7 +2148,7 @@ RELATIONAL DATABASES
 How to insert or update data into a relational database?
 How to retrieve (query) data?
 
-Structured Query Language - SQL
+Structured Query Language – SQL
 
 Declarative language for the definition, access control, manipulation, and retrieval of data in accordance with the relational model
 declarative = only definition of the desired result (what)
@@ -2347,7 +2172,7 @@ for the project system R by IBM (Edgar F. Codd, Donald D. Chamberlin and Raymond
 2008 SQL: 2008 language extension (specific trigger statements)
 2011 SQL: 2011 latest revision of SQL standard
 
-Data Definition Language - DDL
+Data Definition Language – DDL
 
 Typical requests for tables
 create table <table> = create a table
@@ -2370,9 +2195,9 @@ CREATE TABLE: Create tables with its columns and the respective field properties
 Syntax
 CREATE TABLE <Tablename> (
 <Columnname1> <Datatype1>, <Parameter>
-...
+…
 <Columnnamen> <Datatypen>, <Parameter>
-<Constraint1>,... <Constraintn>)
+<Constraint1>,… <Constraintn>)
 Table and column names can be chosen arbitrary
 many data types are predefined, for example: varchar, char, boolean, smallint, integer, bigint, float, double precision, date, time, real, blob, clob
 parameter, are general conditions or key definitions, for example: not null, null, default, auto_increment
@@ -2395,7 +2220,7 @@ Datability
 
 Solution
 
-Data Control Language - DCL
+Data Control Language – DCL
 
 Typical requests
 grant = authorize requests by user
@@ -2406,7 +2231,7 @@ Management of access rights of a database management system
 Will not be considered further in this lecture
 MS Access does not provide real control anyway
 
-Data Manipulation Language - DML
+Data Manipulation Language – DML
 
 Typical requests
 insert = insert rows into a table
@@ -2420,12 +2245,23 @@ Access allows to alter data without usage of SQL
 Select-Statement
 
 Basic syntactical structure:
-select [distinct] A1, A2, ..., An from R1, R2, ..., Rm [where <Bedingung>];
+select [distinct] A1, A2, …, An from R1, R2, …, Rm [where <Bedingung>];
 We can query one or more relations (tables) to get results.
 A condition is optional
 With the * operator instead of specifying columns, we select all the columns for our result.
 
+Processing Model for Queries (1)
 
+from-clause:
+First, the cartesian product is formed over the relations (tables).
+where-clause (optional):
+restriction of the tuples of the cartesian product in the sense of a selection.
+condition is a Boolean formula to compare attributes among themselves or attributes with constants
+select-clause:
+Final projection on the attributes 𝐴𝑖 (columns).
+Symbol "*" instead of attribute names means "all attributes".
+Corresponding relational algebraic expression:
+π 𝐴1, 𝐴2, … , 𝐴𝑛 (σ Constraint (R1 × R2 × ⋯ × Rm))
 
 Processing Model for Queries (2)
 
@@ -2435,7 +2271,7 @@ SQL contains relations as multi set and not as a mathematically rigorous set
 duplicates are possible in both the source relations (tables) as well as the result.
 duplicates are not automatically eliminated by the (most) SQL queries!
 
-Example - Select
+Example – Select
 
 We want to query all the customers with all details. Related select statement:
 select * from Customer;
@@ -2449,10 +2285,10 @@ CustomerID Name Surname
 4 Daniel Lang
 5 Daniel Kurz
 
-Select-Statement - Sorting
+Select-Statement – Sorting
 
 Basic syntactical structure:
-select [distinct] A1, A2 as B, ..., An from R1, R2, ..., Rm [where <Bedingung>] [order by Ak,...,Al [asc|desc]];
+select [distinct] A1, A2 as B, …, An from R1, R2, …, Rm [where <Bedingung>] [order by Ak,…,Al [asc|desc]];
 We can sort the results of our query (for any column)
 We can also name result column (keyword as)
 
@@ -2471,16 +2307,16 @@ InventoryID Title Date Price
 4 Essentials of MIS 03/2011 299,99
 5 SQL Pocket Guide 01/2010 9,29
 
-Select-Statement - Join Operator
+Select-Statement – Join Operator
 
 Basic syntactical structure:
-select [distinct] A1,...,An from R1, R2, ..., Rm [where <Constraint>]
+select [distinct] A1,…,An from R1, R2, …, Rm [where <Constraint>]
 If we want to query multiple relations (tables), we need to specify how these are related.
 SQL provides special statement (join-operator), syntactic structure for this:
-select [distinct] A1,...,An from R1 inner join R2 on <Bedingung> [where <Constraint>]
+select [distinct] A1,…,An from R1 inner join R2 on <Bedingung> [where <Constraint>]
 Should (from a semantic perspective: must) describe the relationship between the relations.
 
-Example - Join
+Example – Join
 
 We want to identify all books with the corresponding title, author names and the price for the book.
 
@@ -2502,7 +2338,7 @@ InventoryID Title Date Price FKAuthorID
 4 Essentials of MIS 03/2011 299,99 4
 5 SQL Pocket Guide 01/2010 9,29 3
 
-Example - Join
+Example – Join
 
 We want to identify all books with the corresponding author names and the price for the book.
 Associated Select-Statement:
@@ -2517,7 +2353,7 @@ Getting Started with SQL: A Hands-On Approach for Beginners Thomas Nield 22,40
 Essentials of MIS Kenneth C. Laudon 299,99
 SQL Pocket Guide Jonathan Gennick 9,29
 
-Functions and Aggregation
+Functions & Aggregation
 
 Similar to Excel, we can also utilize functions in SQL.
 This is useful, especially, if data should be aggregated (sum, average, etc.).
@@ -2526,10 +2362,10 @@ If we want to specify further information (more columns) in our result, then we 
 Standard aggregate functions, exemplary:
 SUM(), MIN(), MAX(), AVG(), COUNT()
 
-Example - Function
+Example – Function
 
 We want to determine the sum of the prices of all books.
-Zugehoerige Select-Anweisung:
+Zugehörige Select-Anweisung:
 select SUM(B.Price) As TotalPricing from Books B
 
 Ergebnis
@@ -2537,17 +2373,17 @@ Ergebnis
 TotalPricing
 343,38
 
-Select-Statement - Group by
+Select-Statement – Group by
 
 BBasic syntactical structure:
-select [distinct] A1,...,An from R1, R2, ..., Rm [where <Bedingung>] [group by Ai,...,Aj] | [group by Ai,...,Aj having <Bedingung>] [order by Ak,...,Al [asc|desc]];
-Eine Gruppierung ist eine Voraussetzung fuer die Ausfuehrung von Aggregatfunktionen mit Bezug auf einzelne Attribute (Spalten)
+select [distinct] A1,…,An from R1, R2, …, Rm [where <Bedingung>] [group by Ai,…,Aj] | [group by Ai,…,Aj having <Bedingung>] [order by Ak,…,Al [asc|desc]];
+Eine Gruppierung ist eine Voraussetzung für die Ausführung von Aggregatfunktionen mit Bezug auf einzelne Attribute (Spalten)
 Standardaggregatfunktionen, beispielhaft:
 SUM(), MIN(), MAX(), AVG(), COUNT()
 
 All non-clustered (grouped) columns may only occur within aggregate functions in the select clause of our query
 
-Example - Group by
+Example – Group by
 
 We want to determine the sum of the prices of all books per book title:
 select SUM(B.Price) As BookValue, Title from Book B group by Title
@@ -2564,7 +2400,7 @@ InventoryID, Title, Date, Price, FKAUthorID
 Intermediate relation after grouping (step 3), so execution of:
 from Book B group by Title
 
-Example - Group by
+Example – Group by
 
 Group 1
 
@@ -2643,7 +2479,7 @@ There are specialized systems to store and other specialized systems to analyse 
 Sources
 
 Literature
-1. J. Gennick, SQL - Pocket Guise, O’Reilly, 2010.
+1. J. Gennick, SQL – Pocket Guise, O’Reilly, 2010.
 2. Wikibook SQL (in German): https://de.wikibooks.org/wiki/Einf%C3%BChrung_in_SQL
 
 Web
@@ -2660,31 +2496,31 @@ Slides Overview:
 1. Computers in Business 4 Querying Data
 2. Learning Objectives
 3. Relational Databases
-4. Structured Query Language - SQL
+4. Structured Query Language – SQL
 5. Standard Development
-6. Data Definition Language - DDL
+6. Data Definition Language – DDL
 7. Create-Anweisung
 8. Create-Anweisung
 9. Exercise
 10. Datability
 11. Solution
-14. Data Control Language - DCL
-15. Data Manipulation Language - DML
+14. Data Control Language – DCL
+15. Data Manipulation Language – DML
 16. Select-Statement
 17. Processing Model for Queries (1)
 18. Processing Model for Queries (2)
-19. Example - Select
-20. Select-Statement - Sorting
+19. Example – Select
+20. Select-Statement – Sorting
 21. Exercise
-23. Select-Statement - Join Operator
-24. Example - Join
-25. Example - Join
-26. Functions and Aggregation
-27. Example - Function
-28. Select-Statement - Group by
-29. Example - Group by
-30. Example - Group by
-31. Example - Group by
+23. Select-Statement – Join Operator
+24. Example – Join
+25. Example – Join
+26. Functions & Aggregation
+27. Example – Function
+28. Select-Statement – Group by
+29. Example – Group by
+30. Example – Group by
+31. Example – Group by
 32. Processing Model for Queries(3)
 33. Conclusion and Outlook
 34. Summary
@@ -2748,7 +2584,7 @@ Availability
 Remote resources will always be available and could not be disturbed due to DoS (Denial of Service) attacks.
 WS 2018/2019 Information Systems - IT Security
 
-Security - Encryption
+Security – Encryption
 
 How do you prevent cutting with confidential information?
 How can you ensure that the message is genuine?
@@ -2811,7 +2647,7 @@ Rationale: using the hash function, a checksum is calculated for the payload. Th
 The receiver can recalculate the checksum and compare it with the original checksum. If both values are the same, so the received message is in its original condition.
 WS 2018/2019 Information Systems - IT Security
 
-Example - Integrity
+Example – Integrity
 
 After the arrival of the data, the checksum is recomputed and compared. If there is a match, the received file is an unaltered copy of the original. Otherwise, a manipulation (change) has occurred.
 Example:
@@ -2819,10 +2655,10 @@ Common algorithms (hash functions) are, for example, MD5 and SHA. You may find a
 
 Payload MD5 - Hash
 Original Die Vorlesung gefaellt mir sehr gut! 63bd2efec83deab6afc46b30bfeb2056
-Manipulation Die Vorlesung gefaellt mir gar nicht! 48e50fba987ef5fb9f115f3f0e2c0a06
+Manipulation Die Vorlesung gefällt mir gar nicht! 48e50fba987ef5fb9f115f3f0e2c0a06
 http://hashgenerator.de/
 
-Authenticity - Authentication
+Authenticity – Authentication
 
 Methods to prove your identity electronically, for example:
 a secret that only you know
@@ -2837,7 +2673,7 @@ stolen objects
 replicate biometric data
 WS 2018/2019 Information Systems - IT Security
 
-Authenticity - Authentication
+Authenticity – Authentication
 
 Solution approach (on the Internet): examination and proof of identity by a credible third party (certificate authority, CA).
 Examples of authentication possibilities
@@ -2849,7 +2685,7 @@ key pair will be used as proof of identity because it was registered by a certif
 In conjunction with hash values it is now obvious if the file is actually from the sender, and whether the file has been changed during transmission.
 WS 2018/2019 Information Systems - IT Security
 
-Authenticity - Authentication
+Authenticity – Authentication
 
 Important: the CAs guarantee the identity of the key owner. Thus, the CAs must be trustworthy and above all failsafe.
 Question: Is a signature on paper 100% safe?
@@ -2875,7 +2711,7 @@ Exam: student card and exam registration
 Online banking: password + temporary code
 WS 2018/2019 Information Systems - IT Security
 
-Attack Methods - Threats on the Internet
+Attack Methods – Threats on the Internet
 
 Social Engineering, Phishing and Dumpster Diving
 Everyone stumbles about these threats on the Internet!
@@ -2898,9 +2734,9 @@ Ask for patience to verify the circumstances.
 Be the most suspicious until the identity of the other is confirmed.
 WS 2018/2019 Information Systems - IT Security
 
-Social Engineering - Example
+Social Engineering – Example
 
-„Windows ist kaputt" (Your windows is broken)
+„Windows ist kaputt“ (Your windows is broken)
 WS 2018/2019 Information Systems - IT Security
 
 Phishing
@@ -2914,7 +2750,7 @@ Phishing
 WS 2018/2019 Information Systems - IT Security
 
 Link:
-http://asd3183...85240812.abusturkiye.com/TR/images/.x/index.php
+http://asd3183…85240812.abusturkiye.com/TR/images/.x/index.php
 
 Phishing
 
@@ -2935,8 +2771,8 @@ Sources
 
 Videos
 What is botnet and how does it spread? https://www.youtube.com/watch?v=s0sgiY93w9c
-Prof. Dr. Mueller-Quade zu Datenschutz, IT-Sicherheit und Kryptographie https://www.youtube.com/watch?v=9VeAXUQHXr0
-Windows-Trickbetrueger im Golem.de-Honigtopf http://video.golem.de/desktop-applikationen/17080/windows-trickbetrueger-im
+Prof. Dr. Müller-Quade zu Datenschutz, IT-Sicherheit und Kryptographie https://www.youtube.com/watch?v=9VeAXUQHXr0
+Windows-Trickbetrüger im Golem.de-Honigtopf http://video.golem.de/desktop-applikationen/17080/windows-trickbetrueger-im
 
 Computers in Business 8 Cloud Computing
 
@@ -2959,17 +2795,17 @@ DEFINITIONS
 
 WS 2017/2018 Computers in Business - Cloud Computing
 
-Definition - Cloud Computing
+Definition – Cloud Computing
 
 WS 2017/2018 Computers in Business - Cloud Computing
 
-Definition - Cloud Computing
+Definition – Cloud Computing
 
-UCBerkeley RADLabs: "Cloud computing has the following characteristics: (1) The illusion of infinite computing resources... (2) The elimination of an up-front commitment by Cloud users... (3). The ability to pay for use...as needed..."
+UCBerkeley RADLabs: “Cloud computing has the following characteristics: (1) The illusion of infinite computing resources… (2) The elimination of an up-front commitment by Cloud users… (3). The ability to pay for use…as needed…”
 
 Economical view
 
-Wikipedia: ".. a style of computing in which dynamically scalable and often virtualized resources are provided as a service over the Internet"
+Wikipedia: “.. a style of computing in which dynamically scalable and often virtualized resources are provided as a service over the Internet”
 
 Technical view
 
@@ -2980,7 +2816,7 @@ Definition according NIST (National Institute of Standards and Technology)
 4 deployment models
 WS 2017/2018 Computers in Business - Cloud Computing
 
-NIST Definition (I) - Five Characteristics
+NIST Definition (I) – Five Characteristics
 
 Autonomous allocation of resources w/o any administrators etc. On-demand Self-Service
 Access via standard internet technology and protocols Broad Network Access
@@ -2991,23 +2827,23 @@ Charging exactly dependent on consumed resources like monitored Measured Service
 
 Computers in Business - Cloud Computing WS 2017/2018
 
-NIST Definition (II) - Three Service Models (adopted)
+NIST Definition (II) – Three Service Models (adopted)
 
 Infrastructure SPs
 Basic SPs
 Intermediaries
 High-value SPs
-"What’s Inside the Cloud? An Architectural Map of the Cloud Landscape" A. Lenk, Th. Sandholm, M. Klems, J. Nimis, S. Tai ICSE-Workshop Cloud 09, May 2009
+“What’s Inside the Cloud? An Architectural Map of the Cloud Landscape” A. Lenk, Th. Sandholm, M. Klems, J. Nimis, S. Tai ICSE-Workshop Cloud 09, May 2009
 
 Computers in Business - Cloud Computing WS 2017/2018
 
-NIST Definition (II) - Three Service Models (adopted)
+NIST Definition (II) – Three Service Models (adopted)
 
 Software-As-A-Service
 Infrastructure-As-A-Service
 Platform-As-A-Service
 
-NIST Definition (III) - Four deployment models
+NIST Definition (III) – Four deployment models
 
 User Organization B Private Cloud Provider
 Organization C Provider Organization D Provider Organization E Public Cloud Hybrid Cloud User Organization A Private Cloud
@@ -3020,10 +2856,10 @@ WS 2017/2018 Computers in Business - Cloud Computing
 
 Success Story 1: NY Times, November 2007
 
-Motivation: Create "TimesMachine" - a public digital archive of articles of the NYTimes newspaper from 1851-1922
+Motivation: Create “TimesMachine” – a public digital archive of articles of the NYTimes newspaper from 1851–1922
 Intent: Convert terabytes of data in web-unfriendly formats (TIFF images, millions of articles) into PDF files
 Problem: Tight deadlines, insufficient capacity of corporate servers, buying additional hardware not an option
-Solution: Using Amazon S3 (4TB upload, 1.5TB generated) and EC2 (-100 instances) all PDFs generated in <24h for <$500
+Solution: Using Amazon S3 (4TB upload, 1.5TB generated) and EC2 (~100 instances) all PDFs generated in <24h for <$500
 Source: D. Gottfrid. Self-service, prorated super computing fun! New York Times, November 1, 2007
 
 Computers in Business - Cloud Computing WS 2017/2018
@@ -3042,7 +2878,7 @@ Cloud Story 4: US White House, September 2009
 
 Motivation: Provide an online storefront for federal agencies to quickly browse and purchase cloud-based IT services
 Intent: Cost-savings: Lower the $75 billion/year in IT spending
-Problem: "Past practices too often resulted in inefficient use of purchased IT capabilities across the federal government."
+Problem: “Past practices too often resulted in inefficient use of purchased IT capabilities across the federal government.”
 Solution: Apps.Gov
 Source: V. Kundra (White House CIO), White House Blog, Sept. 15, 2009
 
@@ -3074,7 +2910,7 @@ Under-utilized server resources waste computing power and energy
 Over-utilized servers cause interruption or degradation of service levels
 Computers in Business - Cloud Computing WS 2017/2018
 
-Simon Wardley: „Cloud Computing - Why IT Matters", OSCON 09
+Simon Wardley: „Cloud Computing - Why IT Matters“, OSCON 09
 http://www.youtube.com/watch_popup?v=okqLxzWS5R4#t=347
 Compares CC to the (undefinable) industrial revolution:
 His definition:
@@ -3102,7 +2938,7 @@ CHALLENGES TO CLOUD COMPUTING
 
 Computers in Business - Cloud Computing WS 2017/2018
 
-Berkeleys Top 10 Obstacles to Cloud Computing
+Berkeley‘s Top 10 Obstacles to Cloud Computing
 Above the Clouds: A Berkeley View of Cloud Computing. Armbrust M, Fox A, Griffith R, Joseph A, Katz R, Konwinski A, Lee G, Patterson D, Rabkin A, Stoica I und Zaharia M.
 Technical Report No. UCB/EECS-2009-28. Electrical Engineering and Computer Sciences.
 University of California at Berkeley. USA. 2009
@@ -3123,7 +2959,7 @@ AR3: The EC should encourage the development and production of (a) CLOUD interop
 AR4: The EC should promote the European leadership position in software through commercially relevant open source approaches
 WS 2017/2018 Computers in Business - Cloud Computing
 
-The Future of Cloud Computing - Opportunities for European Cloud Computing Beyond 2010. EU Expert Group Report - Public Version 1.0. http://cordis.europa.eu/fp7/ict/ssai/docs/executivesummary-forweb_en.pdf. 2010
+The Future of Cloud Computing – Opportunities for European Cloud Computing Beyond 2010. EU Expert Group Report – Public Version 1.0. http://cordis.europa.eu/fp7/ict/ssai/docs/executivesummary-forweb_en.pdf. 2010
 
 SELECT ACTIVITIES IN THE FIELD
 
@@ -3147,11 +2983,11 @@ Activity 1: Security
 There is a strong need to rationalize the Cloud Security discussion
 What aspects of security are we talking about?
 Confidentiality (Vertraulichkeit)
-Integrity (Integritaet)
-Availability (Verfuegbarkeit)
-Authenticity (Authentizitaet)
+Integrity (Integrität)
+Availability (Verfügbarkeit)
+Authenticity (Authentizität)
 Transparency (Zurechenbarkeit)
-Privacy (Pseudonymitaet)
+Privacy (Pseudonymität)
 What are the real threats in the Cloud?
 Data security
 Location of the data

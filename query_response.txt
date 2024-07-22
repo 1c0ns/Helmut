@@ -1,0 +1,20 @@
+{'matches': [{'id': '19627ec7-800d-4b3e-8558-394e7821eb2b',
+              'metadata': {'text': '9.06.2002\n'
+                                   'Adress: Hagenschießstraße 1, 75175 '
+                                   'Pforzh'},
+              'score': 0.402513,
+              'values': []},
+             {'id': 'efd6cad6-4b29-4dd1-b6a4-ce4d5c1e4a4f',
+              'metadata': {'text': 'eim\n'
+                                   'Study Program: Digital Entreprise '
+                                   'Management'},
+              'score': 0.356819332,
+              'values': []},
+             {'id': '97ddb7b9-dd95-4a2e-bf7a-41050762df74',
+              'metadata': {'text': 'Julius Troegele\n'
+                                   'Name: Julius Troegele\n'
+                                   'Day of birth: 1'},
+              'score': 0.343118399,
+              'values': []}],
+ 'namespace': '',
+ 'usage': {'read_units': 6}}

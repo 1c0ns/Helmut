@@ -31,6 +31,7 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
         print("Length of identify list must be equal to the length of the vector list")
         return
 
+    '''
     query_response = []
     for vec in vector:
         query_response.append(query_embeddings(vec, top_k = 1))
@@ -43,7 +44,7 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
     for i in range(len(ids)):
         query_response_array.append(vector_already_in_index(ids[i], scores[i]))
 
-    '''
+    
     try:
         # Attempt to convert all elements to float
         vector = [float(item) for item in vector]
@@ -54,7 +55,8 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
     #print("vector len before: " + str(len(vector))) #debug
 
     # Prepare the vector data for upsert
-    vector_data = [{"id": identify[i], "values": vector[i]} for i in range(len(vector)) if not query_response_array[i]]
+    vector_data = [{"id": identify[i], "values": vector[i], "metadata": {"text": metadata[i]}} for i in range(len(vector))]
+    # vector_data = [{"id": identify[i], "values": vector[i], "metadata": metadata[i]} for i in range(len(vector)) if not query_response_array[i]]  #original with error
 
     # print("vector len after: " + str(len(vector_data))) #debug
     # return #debug
@@ -67,15 +69,15 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
         )
     
     # Confirmation message
-    print("Upserted vector to Pinecone index")
+    print("Upserted vectors to Pinecone index")
 
 
 # separate ids and scores from the query response
-def separate_ids_and_scores(querry_response):
+def separate_ids_and_scores(query_response):
     ids =[]
     scores =[]
 
-    for item in querry_response:
+    for item in query_response:
         matches = item['matches']
         for match in matches:
             ids.append(match['id'])
@@ -110,4 +112,10 @@ def fetch_vector(vector_ids):
     vectors.append(index.fetch(ids=vector_ids))
 
     return vectors
+
+def index_query(vector_data, top_k_value=5):
+
+    query_response = index.query(vector=vector_data, filter={"text": {"$exists": True}}, top_k=top_k_value, include_metadata=True)
+
+    return query_response
 
