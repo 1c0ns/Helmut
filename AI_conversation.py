@@ -12,9 +12,17 @@ prompt4 = None
 with open("data_files//prof_prompt.txt", "r") as file:
     prompt4 = file.read()
 
-def chat_with_ai():
+def chat_with_ai(prompt: str):
+    """
+    Function to start a conversation with the AI.
+
+    This function initializes an array list to store all messages and starts a conversation loop.
+    It prompts the user for input, appends the user message to the array list, generates an AI response,
+    and appends the AI's response to the array list. The loop continues until the user enters "exit".
+    """
+
     # Initialize array list that stores all messages
-    messages = [{"role": "system", "content": prompt4}]
+    messages = [{"role": "system", "content": prompt}]
 
     # Start the conversation loop that keeps adding user messages and AI responses to the array list
     while True:
@@ -43,7 +51,21 @@ def chat_with_ai():
         if user_message.lower() == "exit":
             break
 
+
 def handle_user_input(user_input, top_k=5):
+    """
+    Function to handle user input and generate a prompt for the AI.
+
+    This function takes the user's input, creates a vector representation of the input using embeddings_openAI,
+    queries an index to retrieve relevant context, and formats the input into a prompt for the AI.
+
+    Args:
+        user_input (str): The user's input.
+        top_k (int, optional): The number of top results to retrieve from the index. Defaults to 5.
+
+    Returns:
+        str: The formatted prompt for the AI.
+    """
 
     vector = embeddings_openAI.create_vector(user_input)
 
@@ -53,10 +75,8 @@ def handle_user_input(user_input, top_k=5):
 
     prompt = retrieve_Vectors_data.formatted_input(context, user_input)
 
-    # print("Prompt: " + prompt)    #debug
-
     return prompt
 
 # Start chatting with the AI
 if __name__ == "__main__":
-    chat_with_ai()
+    chat_with_ai(prompt=prompt4)
