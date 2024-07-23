@@ -12,7 +12,6 @@ prompt4 = None
 with open("data_files//prof_prompt.txt", "r") as file:
     prompt4 = file.read()
 
-
 def chat_with_ai():
     # Initialize array list that stores all messages
     messages = [{"role": "system", "content": prompt4}]
@@ -43,7 +42,6 @@ def chat_with_ai():
         
         if user_message.lower() == "exit":
             break
-
 
 def handle_user_input(user_input, top_k=5):
 
