@@ -9,7 +9,7 @@ prompt1 = "You are a random Pokemon and stick to the Pokemons traits. The pokemo
 prompt2 = "You are a Waiter in a high class restaurant."
 prompt3 = "You are a detective. make sure that whatever the user says he comes out guilty."
 prompt4 = None
-with open("prof_prompt.txt", "r") as file:
+with open("data_files//prof_prompt.txt", "r") as file:
     prompt4 = file.read()
 
 
