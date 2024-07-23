@@ -23,13 +23,13 @@ def chat_with_ai():
         user_message = input("You: ")
         
         # Append the user message to the array list that stores all messages
-        messages.append({"role": "user", "content": handle_user_input(user_message)})       # handle_user_input(user_message) to create the query
+        messages.append({"role": "user", "content": handle_user_input(user_message)})       # handle_user_input(user_message) to create a prompt
         
         # Create a chat completion with the current conversation history
         completion = fireworks.client.ChatCompletion.create(
             "accounts/fireworks/models/llama-v3-70b-instruct",
             messages=messages,
-            temperature=2,
+            temperature=1,
             n=1,
             max_tokens=250
         )
@@ -49,17 +49,15 @@ def handle_user_input(user_input, top_k=5):
 
     vector = embeddings_openAI.create_vector(user_input)
 
-    query_response = retrieve_Vectors_data.index_query(vector, top_k)
+    query_response = retrieve_Vectors_data.query_index(vector, top_k)
 
-    context = retrieve_Vectors_data.fetch_content(query_response)
+    context = retrieve_Vectors_data.fetch_context(query_response)
 
     prompt = retrieve_Vectors_data.formatted_input(context, user_input)
 
     # print("Prompt: " + prompt)    #debug
 
     return prompt
-    
-
 
 # Start chatting with the AI
 if __name__ == "__main__":

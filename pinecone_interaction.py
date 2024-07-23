@@ -71,7 +71,7 @@ def upsert_vector(vector: list, identify: list[str]=None, metadata: str=None, na
     # Confirmation message
     print("Upserted vectors to Pinecone index")
 
-
+# not used 
 # separate ids and scores from the query response
 def separate_ids_and_scores(query_response):
     ids =[]
@@ -84,12 +84,14 @@ def separate_ids_and_scores(query_response):
             scores.append(match['score'])
     return ids, scores
 
+# not used 
 def vector_already_in_index(id, score):
 
     if float(score) > 0.95:
         return True
     return False
 
+# not used 
 # similarity search 
 def query_embeddings(vector, top_k=5):
     results = index.query(vector=vector, top_k=top_k)
@@ -99,6 +101,7 @@ def query_embeddings(vector, top_k=5):
 def delete_vectors(vector_ids, score=None):
     index.delete(ids=vector_ids)
 
+# not used 
 def fetch_vector(vector_ids):
     '''
     ids = [str]
@@ -113,9 +116,9 @@ def fetch_vector(vector_ids):
 
     return vectors
 
-def index_query(vector_data, top_k_value=5):
+
+def query_index(vector_data, top_k_value=5):
 
     query_response = index.query(vector=vector_data, filter={"text": {"$exists": True}}, top_k=top_k_value, include_metadata=True)
 
     return query_response
-
