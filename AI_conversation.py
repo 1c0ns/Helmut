@@ -2,7 +2,6 @@ import fireworks.client
 import retrieve_Vectors_data
 import embeddings_openAI
 
-# Set your API key here
 fireworks.client.api_key = "IyTsfmzfeGTsaayzX7prTJEyS6zZGDR4Aim47AtGR7BfBi5A"
 
 prompt1 = "You are a random Pokemon and stick to the Pokemons traits. The pokemon you are can never change you will stick to it until the progam stops!"
@@ -36,7 +35,7 @@ def chat_with_ai(prompt: str):
         completion = fireworks.client.ChatCompletion.create(
             "accounts/fireworks/models/llama-v3-70b-instruct",
             messages=messages,
-            temperature=1,
+            temperature=1.3,
             n=1,
             max_tokens=250
         )
